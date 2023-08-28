@@ -5,7 +5,7 @@ const resultAlert = document.getElementById('resultAlert');
 const turnHeading = document.getElementById('turn');
 
 let currentPlayer = 'X';
-let gameBoard = ['', '', '', '', '', '', '', '', ''];
+let gameBoard = ["", "", "", "", "", "", "", "", ""];
 let gameActive = true;
 
 // Function to check for a win
@@ -18,15 +18,22 @@ function checkWinner() {
 
   for (const combo of winningCombos) {
     const [a, b, c] = combo;
-    if (gameBoard[a] && gameBoard[a] === gameBoard[b] && gameBoard[a] === gameBoard[c]) {
-      return gameBoard[a];
+    if (
+      gameBoard[a] === currentPlayer &&
+      gameBoard[b] === currentPlayer &&
+      gameBoard[c] === currentPlayer
+    ) {
+      gameActive = false;
+      console.log(currentPlayer);
+      return currentPlayer;
+    } else if (gameBoard.includes("")) {
+      console.log("game active");
+      gameActive = true;
+    } else if (!gameBoard.includes("")) {
+      console.log("draw");
+      return "draw";
     }
   }
-
-  if (!gameBoard.includes('')) {
-    return 'draw';
-  }
-
   return null;
 }
 
@@ -40,14 +47,18 @@ function handleCellClick(cell, index) {
   cell.textContent = currentPlayer;
   
   const winner = checkWinner();
-  if (winner) {
-    gameActive = false;
+  console.log(`winner: ${winner}`);
+  if (winner === 'X' || winner === 'O' || winner === 'draw' ) {
+   console.log('step 1 ran')
     if (winner === 'draw') {
+      console.log('step 2 ran')
       resultAlert.textContent = 'It\'s a draw!';
-    } else {
+    } else if (winner === 'X' || winner === 'O') {
+      console.log('step 3 ran')
       resultAlert.textContent = `${winner} wins!`;
+       resultAlert.classList.add("alert");
+        resultAlert.classList.add("alert-success");
     }
-    resultAlert.classList.add('alert-success');
   } else {
     currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
     turnHeading.textContent = `${currentPlayer}'s Turn`;

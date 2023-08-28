@@ -29,20 +29,6 @@
     border-radius: 5px;
   }
   
-  /* Add styling to the result alert */
-  .alert {
-    display: none;
-    margin-top: 20px;
-    padding: 10px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .alert-success {
-    background-color: #28a745;
-    color: #fff;
-  }
   
   /* Center the content vertically and horizontally */
   body {
