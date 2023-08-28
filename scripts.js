@@ -5,7 +5,7 @@ const resultAlert = document.getElementById('resultAlert');
 const turnHeading = document.getElementById('turn');
 
 let currentPlayer = 'X';
-let gameBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8'];
+let gameBoard = ['', '', '', '', '', '', '', '', ''];
 let gameActive = true;
 
 // Function to check for a win
